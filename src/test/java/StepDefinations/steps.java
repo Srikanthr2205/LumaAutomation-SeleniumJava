@@ -12,32 +12,40 @@ import PageObjects.SuccessPage;
 import io.cucumber.java.en.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class steps {
+public class steps extends PageObjects.BaseClass{
 
-    WebDriver driver;
+    
     public LoginPage lp;
     public HomePage hp;
     public ProductDetailsPage pd;
     public CheckoutPage cp;
     public SuccessPage sp;
 
-    @Given("User launch a Chrome browser")
-    public void user_launch_a_chrome_browser() {
-        // Use WebDriverManager to set up chromeDriver
-    	WebDriverManager.chromedriver().browserVersion("129").setup();
-
-        driver = new ChromeDriver();  // Initialize the chrome driver
-        driver.manage().window().maximize();  // Maximize the browser window
+  
+    
+    @Given("User launch a {string} browser")
+    public void user_launch_a_browser(String browser) {
+        // Write code here that turns the phrase above into concrete actions
+    	initializeBrowser(browser);
+    	 lp = new LoginPage(driver);
+         hp = new HomePage(driver);
+         pd = new ProductDetailsPage(driver);
+         cp = new CheckoutPage(driver);
+         sp = new SuccessPage(driver);
+    	
+    	
+    	
     }
+
 
     @Given("User opens URL {string}")
     public void user_opens_url(String url) {
-        driver.get(url);
-        lp = new LoginPage(driver); // Initialize LoginPage object after loading the page
+    	openUrl(url);
     }
 
     @When("User clicks on Signin button")
     public void user_clicks_on_signin_button() {
+    	lp = new LoginPage(driver);
         lp.SignInPage();  // Navigate to the sign-in page
     }
 
@@ -122,6 +130,6 @@ public class steps {
 
     @Then("close browser")
     public void close_browser() {
-        driver.close();  // Close the browser
+        teardown(); // Close the browser
     }
 }

@@ -1,12 +1,9 @@
-#Author: srikanthr2205@google.com
-
-
-
+#Author: srikanthr2205@gmail.com
 
 Feature: Login
   
 Scenario: Successful Login with Valid Credentials
-    Given User launch a Chrome browser
+    Given User launch a "Chrome" browser
     And User opens URL "https://magento.softwaretestingboard.com/"
     When User clicks on Signin button
     Then user should be redirected to the signin page title should be "Customer Login"
@@ -16,9 +13,9 @@ Scenario: Successful Login with Valid Credentials
     Then The welcome message "Welcome, Srikanth Reddy!" should be displayed
     And close browser
     
-
+@login1
 Scenario Outline: Successful Login with DATA DRIVEN
-    Given User launch a Chrome browser
+    Given User launch a "Chrome" browser
     And User opens URL "https://magento.softwaretestingboard.com/"
     When User clicks on Signin button
     Then user should be redirected to the signin page title should be "Customer Login"
@@ -29,9 +26,6 @@ Scenario Outline: Successful Login with DATA DRIVEN
     And close browser
     
     Examples:
-    | email  | password|
-    | srikanthr2205@gmail.com|Srikanth@1234|
-    | vinay123@gmail.com|Vinay1234|
-    
-    
-    
+    | email  										| 			password				|
+    | srikanthr2205@gmail.com		|				Srikanth@1234		|
+    | vinay123@gmail.com				|				Vinay1234				|

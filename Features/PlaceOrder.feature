@@ -7,7 +7,7 @@ Feature: Place Order Functionality
   So that I can purchase products.
 
   Background:
-    Given User launch a Chrome browser
+    Given User launch a "Chrome" browser
     And User opens URL "https://magento.softwaretestingboard.com/"
     When User clicks on Signin button
     Then user should be redirected to the signin page title should be "Customer Login"
