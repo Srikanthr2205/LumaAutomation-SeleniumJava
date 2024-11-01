@@ -16,7 +16,8 @@ import org.testng.annotations.Test;
        // "Features/PlaceOrder.feature" // Add the second feature file path here
     },
     glue = {"StepDefinations"}, // Path to the step definition package
-    plugin = {"pretty", "html:target/cucumber-reports.html"},
+    plugin = {"pretty", "html:target/cucumber-reports.html",
+    		"json:target/cucumber.json"},
     publish = true,
     monochrome = true ,
     tags = "@login1" 
