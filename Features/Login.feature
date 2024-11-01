@@ -3,7 +3,7 @@
 Feature: Login
   
 Scenario: Successful Login with Valid Credentials
-    Given User launch a "Chrome" browser
+    Given User launch a "edge" browser
     And User opens URL "https://magento.softwaretestingboard.com/"
     When User clicks on Signin button
     Then user should be redirected to the signin page title should be "Customer Login"
@@ -15,7 +15,7 @@ Scenario: Successful Login with Valid Credentials
     
 @login1
 Scenario Outline: Successful Login with DATA DRIVEN
-    Given User launch a "Chrome" browser
+    Given User launch a "firefox" browser
     And User opens URL "https://magento.softwaretestingboard.com/"
     When User clicks on Signin button
     Then user should be redirected to the signin page title should be "Customer Login"
