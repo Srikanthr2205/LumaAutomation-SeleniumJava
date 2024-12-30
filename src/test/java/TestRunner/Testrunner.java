@@ -13,14 +13,14 @@ import org.testng.annotations.Test;
     // Provide the path to multiple feature files
     features = {
       "Features/Login.feature", 
-       // "Features/PlaceOrder.feature" // Add the second feature file path here
+       //"Features/PlaceOrder.feature" 
     },
     glue = {"StepDefinations"}, // Path to the step definition package
     plugin = {"pretty", "html:target/cucumber-reports.html",
     		"json:target/cucumber.json"},
     publish = true,
-    monochrome = true ,
-    tags = "@login1" 
+    monochrome = true 
+    //tags = "@login1" 
 )
 @Test
 public class Testrunner extends AbstractTestNGCucumberTests  {
