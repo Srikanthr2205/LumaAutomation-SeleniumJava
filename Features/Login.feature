@@ -1,31 +1,35 @@
 #Author: srikanthr2205@gmail.com
 
 Feature: Login
-  
-Scenario: Successful Login with Valid Credentials
-    Given User launch a "edge" browser
-    And User opens URL "https://magento.softwaretestingboard.com/"
-    When User clicks on Signin button
-    Then user should be redirected to the signin page title should be "Customer Login"
-    When User enter Email as "srikanthr2205@gmail.com"
-    And User enter password as "Srikanth@1234"
-    When User clicks on Sign in button
-    Then The welcome message "Welcome, Srikanth Reddy!" should be displayed
-    And close browser
+
+@login12   
+Scenario: Successful Login with Valid Credentials  
+    Given the user clicks on the Sign In button  
+    Then the user should be redirected to the "Customer Login" page  
+    When the user enters the email as "srikanthr2205@gmail.com"  
+    And the user enters the password as "Srikanth@1234"  
+    And the user clicks on the below Sign-In button  
+    Then the welcome message "Welcome, Srikanth Reddy!" should be displayed
+
     
 @login1
-Scenario Outline: Successful Login with DATA DRIVEN
-    Given User launch a "edge" browser
-    And User opens URL "https://magento.softwaretestingboard.com/"
-    When User clicks on Signin button
-    Then user should be redirected to the signin page title should be "Customer Login"
-    When User enter Email as "<email>"
-    And User enter password as "<password>"
-    When User clicks on Sign in button
-    Then The welcome message "Welcome, Srikanth Reddy!" should be displayed
-    And close browser
+Scenario Outline: Successful Login with Data-Driven Testing 
+    
+    Given the user clicks on the Sign In button  
+    Then the user should be redirected to the "Customer Login" page  
+    When the user enters the email as "<email>"  
+    And the user enters the password as "<password>"  
+    And the user clicks on the below Sign-In button  
+    Then the welcome message "Welcome, <name>!" should be displayed
+   
     
     Examples:
-    | email  										| 			password				|
-    | srikanthr2205@gmail.com		|				Srikanth@1234		|
-    | vinay123@gmail.com				|				Vinay1234				|
+    | email  										| 			password				| name             |
+    | srikanthr2205@gmail.com		|				Srikanth@1234		| Srikanth Reddy   |
+    | udhayrao@gmail.com			  |				Udhay@1234			| Udhay Rao        |
+    
+    
+    
+    
+    
+    

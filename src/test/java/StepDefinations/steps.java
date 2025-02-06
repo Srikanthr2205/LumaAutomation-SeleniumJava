@@ -1,8 +1,17 @@
 package StepDefinations;
 
+import java.time.Duration;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import PageObjects.BaseClass;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import PageObjects.CheckoutPage;
 import PageObjects.HomePage;
@@ -20,71 +29,56 @@ public class steps extends PageObjects.BaseClass{
     public ProductDetailsPage pd;
     public CheckoutPage cp;
     public SuccessPage sp;
-
-  
+     
     
-    @Given("User launch a {string} browser")
-    public void user_launch_a_browser(String browser) {
-        // Write code here that turns the phrase above into concrete actions
-    	initializeBrowser(browser);
-    	 lp = new LoginPage(driver);
-         hp = new HomePage(driver);
-         pd = new ProductDetailsPage(driver);
-         cp = new CheckoutPage(driver);
-         sp = new SuccessPage(driver);
-    	
-    	
-    	
-    }
-
-
-    @Given("User opens URL {string}")
-    public void user_opens_url(String url) {
-    	openUrl(url);
-    }
-
-    @When("User clicks on Signin button")
-    public void user_clicks_on_signin_button() {
+    @Given("the user clicks on the Sign In button")
+    public void the_user_clicks_on_the_sign_in_button() 
+    {
     	lp = new LoginPage(driver);
-        lp.SignInPage();  // Navigate to the sign-in page
+        lp.SignInPage();  			       // Navigate to the sign-in page    
     }
-
-    @Then("user should be redirected to the signin page title should be {string}")
-    public void user_should_be_redirected_to_the_signin_page_title_should_be(String expectedTitle) {
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, expectedTitle, "Title does not match");
+   
+    
+    @Then("the user should be redirected to the {string} page")
+    public void the_user_should_be_redirected_to_the_page(String expectedTitle) {
+        String actualTitle = driver.getTitle(); 														// Get the current page title
+        Assert.assertEquals(actualTitle, expectedTitle, "Test Failed: Page title does not match!"); 	 // Assert to verify expected and actual page titles
     }
     
-   
-
-
-    @When("User enter Email as {string}")
-    public void user_enter_email_as(String email) {
-        lp.setUserEmail(email);  // Set the user email
+    
+    
+    @When("the user enters the email as {string}")
+    public void the_user_enters_the_email_as(String email) {
+    	lp.setUserEmail(email);
+    }
+    
+    
+    @When("the user enters the password as {string}")
+    public void the_user_enters_the_password_as(String password) {
+    	 lp.setUserPassword(password);
+    }
+    
+    @When("the user clicks on the below Sign-In button")
+    public void the_user_clicks_on_the_below_sign_in_button() {
+    	lp.signin();
     }
 
-    @When("User enter password as {string}")
-    public void user_enter_password_as(String password) {
-        lp.setUserPassword(password);  // Set the user password
+
+
+    @Then("the welcome message {string} should be displayed")
+    public void the_welcome_message_should_be_displayed(String ExpMessage)  {
+        
+    
+    	String ActualMessage = lp.getwelcomemsg();
+    	
+    	Assert.assertEquals(ActualMessage,ExpMessage , "Welcome message mismatch!");
+    	
     }
 
-    @When("User clicks on Sign in button")
-    public void user_clicks_on_sign_in_button() {
-        lp.signin();  // Click on the sign-in button
-    }
+    
+    
+    //==================  Step to select a product from the Hotsellers list ============================
 
-    @Then("The welcome message {string} should be displayed")
-    public void the_welcome_message_should_be_displayed(String expectedMessage) throws InterruptedException {
-        Thread.sleep(5000);  // Wait for the welcome message to appear
-        try {
-            String actualMessage = lp.getwelcomemsg();
-            Assert.assertEquals(actualMessage, expectedMessage, "Welcome message does not match");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    // Step to select a product from the Hotsellers list
     @Given("User selects any product from Hotsellers list")
     public void user_selects_any_product_from_hotsellers_list() {
     	hp = new HomePage(driver);
@@ -128,8 +122,11 @@ public class steps extends PageObjects.BaseClass{
         sp.ValidateSuccessMsg();  // Validate the success message
     }
 
-    @Then("close browser")
-    public void close_browser() {
-        teardown(); // Close the browser
-    }
+    
 }
+
+
+
+
+
+

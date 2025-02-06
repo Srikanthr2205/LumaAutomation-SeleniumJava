@@ -19,8 +19,10 @@ import org.testng.annotations.Test;
     plugin = {"pretty", "html:target/cucumber-reports.html",
     		"json:target/cucumber.json"},
     publish = true,
-    monochrome = true 
-    //tags = "@login1" 
+    monochrome = true, 
+    tags = "@login1",
+    dryRun = false
+   
 )
 @Test
 public class Testrunner extends AbstractTestNGCucumberTests  {
