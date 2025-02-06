@@ -79,48 +79,61 @@ public class steps extends PageObjects.BaseClass{
     
     //==================  Step to select a product from the Hotsellers list ============================
 
-    @Given("User selects any product from Hotsellers list")
-    public void user_selects_any_product_from_hotsellers_list() {
+    
+    
+    @Given("the user selects a product from the Hot Sellers section")
+    public void the_user_selects_a_product_from_the_hot_sellers_section() {
     	hp = new HomePage(driver);
         hp.SelectAnyProduct();
+    	
     }
 
     // Step to select size, color, and quantity
-    @Given("User selects size {string}, color {string}, and quantity {string}")
-    public void user_selects_size_color_and_quantity(String size, String color, String qty) {
-    	pd = new ProductDetailsPage(driver);
-        pd.SelectSize(size);  // Select product size
-        pd.SelectColor(color);  // Select product color
-        pd.SelectQuantity(qty);  // Select product quantity
-    }
+        
+        @Given("the user chooses size {string}, color {string}, and quantity {string}")
+        public void the_user_chooses_size_color_and_quantity(String size, String color, String qty) {
+        	pd = new ProductDetailsPage(driver);
+            pd.SelectSize(size);  // Select product size
+            pd.SelectColor(color);  // Select product color
+            pd.SelectQuantity(qty);  // Select product quantity     
+            
+        }
+   
+            
+        @When("the user adds the product to the cart")
+        public void the_user_adds_the_product_to_the_cart() {
+        	pd.AddtoCart();  // Add product to the cart
+            pd.cartbtn();  // Click on the cart button
+        }
+        
+   
+        @When("proceeds to checkout")
+        public void proceeds_to_checkout() {
+        	 pd.ProceedtoCheckout();  // Proceed to checkout
+        }
+        
 
-    @When("User adds product to the cart")
-    public void user_adds_product_to_the_cart() {
-        pd.AddtoCart();  // Add product to the cart
-        pd.cartbtn();  // Click on the cart button
-    }
+        @When("enters valid shipping and payment details")
+        public void enters_valid_shipping_and_payment_details() {
+        	cp = new CheckoutPage(driver);
+            cp.ShippingAddress();  // Enter shipping details
+        }
+        
 
-    @When("User proceeds to checkout")
-    public void user_proceeds_to_checkout() {
-        pd.ProceedtoCheckout();  // Proceed to checkout
-    }
+        @When("places the order")
+        public void places_the_order() {
+        	cp.PlaceOrder();  // Place the order
+        }
+        
+        
 
-    @When("User enters valid shipping and payment details")
-    public void user_enters_valid_shipping_and_payment_details() {
-    	cp = new CheckoutPage(driver);
-        cp.ShippingAddress();  // Enter shipping details
-    }
+        @Then("the order should be placed successfully, and an order confirmation message should be displayed")
+        public void the_order_should_be_placed_successfully_and_an_order_confirmation_message_should_be_displayed() {
+        	sp = new SuccessPage(driver);
+            sp.ValidateSuccessMsg();  // Validate the success message
+        }
 
-    @When("User place the order")
-    public void user_place_the_order() {
-        cp.PlaceOrder();  // Place the order
-    }
-
-    @Then("Order placed and user should see an order confirmation message")
-    public void order_placed_and_user_should_see_an_order_confirmation_message() {
-    	sp = new SuccessPage(driver);
-        sp.ValidateSuccessMsg();  // Validate the success message
-    }
+    
 
     
 }
