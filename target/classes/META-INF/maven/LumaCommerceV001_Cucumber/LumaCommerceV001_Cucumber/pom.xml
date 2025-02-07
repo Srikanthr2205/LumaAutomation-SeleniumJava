@@ -102,5 +102,25 @@
 		</dependency>
 
 
+
+
+<!-- Extent Reports Dependency -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>5.0.9</version>  <!-- Use the latest version -->
+</dependency>
+
+
+
     </dependencies>
+    
+    
+    <repositories>
+    <repository>
+        <id>extent-repo</id>
+        <url>https://repsy.io/mvn/extent-reports/extentreports/</url>
+    </repository>
+</repositories>
+
 </project>

@@ -12,15 +12,15 @@ import org.testng.annotations.Test;
 @CucumberOptions(
     // Provide the path to multiple feature files
     features = {
-     // "Features/Login.feature", 
-       "Features/PlaceOrder.feature" 
+      "Features/Login.feature", 
+     //  "Features/PlaceOrder.feature" 
     },
     glue = {"StepDefinations"}, // Path to the step definition package
     plugin = {"pretty", "html:target/cucumber-reports.html",
     		"json:target/cucumber.json"},
     publish = true,
     monochrome = true, 
-   // tags = "@login1",
+    tags = "@login1",
     dryRun = false
    
 )

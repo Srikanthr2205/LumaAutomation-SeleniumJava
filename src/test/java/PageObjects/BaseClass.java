@@ -33,7 +33,7 @@ public class BaseClass {
     // 🔹 Method to load properties from `Config.properties`
     public void loadProperties() {
         try {
-            File file = new File("D:\\WorkSpace - EcllipseIDE\\Selenium-Cucumber-LUMA\\src\\test\\java\\Utils\\Config.properties");
+            File file = new File("D:\\WorkSpace - EcllipseIDE\\Selenium-Cucumber-LUMA\\src\\test\\resources\\Config.properties");
             FileInputStream fileinput = new FileInputStream(file);
             properties.load(fileinput);
             fileinput.close();
