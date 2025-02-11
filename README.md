@@ -55,7 +55,7 @@ It includes test scenarios for user login and placing an order, ensuring the rel
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/your-username/Selenium-Cucumber-LUMA.git
+git clone https://github.com/Srikanthr2205/LumaAutomation-SeleniumJava.git
 cd Selenium-Cucumber-LUMA
 
 
